@@ -270,8 +270,8 @@ func (c *Config) Poll(ctx context.Context, da *DeviceAuth, opts ...AuthCodeOptio
 			return tok, nil
 		}
 
-		errTyp := parseError(err)
-		switch errTyp {
+		e, _ := err.(*RetrieveError)
+		switch e.ErrorCode {
 		case errSlowDown:
 			interval += 5
 		case errAuthorizationPending:

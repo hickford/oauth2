@@ -323,13 +323,3 @@ type RetrieveError struct {
 func (r *RetrieveError) Error() string {
 	return fmt.Sprintf("oauth2: cannot fetch token: %v\nResponse: %s", r.Response.Status, r.Body)
 }
-
-type TokenError struct {
-	Err              string
-	ErrorDescription string
-	ErrorURI         string
-}
-
-func (t *TokenError) Error() string {
-	return fmt.Sprintf("oauth2: error in token fetch response: %s\nerror_description: %s\nerror_uri: %s", t.Err, t.ErrorDescription, t.ErrorURI)
-}
